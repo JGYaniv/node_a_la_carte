@@ -1,0 +1,6 @@
+@import "search.css";
+@import "details.css";
+
+ul {
+    list-style: none;
+}

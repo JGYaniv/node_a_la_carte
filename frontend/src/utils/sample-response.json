@@ -1,0 +1,44 @@
+{
+    "modules": [
+        "react",
+        "react-dom",
+        "react-dev-utils",
+        "react-router-dom",
+        "react-is",
+        "react-router",
+        "react-redux",
+        "react-scripts",
+        "react-error-overlay"
+    ],
+    "module": {
+        "title": "redux",
+        "latest_version": "4.0.5",
+        "versions": [
+            {
+                "num": "4.0.5",
+                "mini": 6200,
+                "gzip": 2700
+            },
+            {
+                "num": "4.0.4",
+                "mini": 6400,
+                "gzip": 2300
+            },
+            {
+                "num": "4.0.3",
+                "mini": 6000,
+                "gzip": 3000
+            },
+            {
+                "num": "4.0.2",
+                "mini": 6500,
+                "gzip": 2500
+            },
+            {
+                "num": "3.7.1",
+                "mini": 6300,
+                "gzip": 2600
+            }
+        ]
+    }
+}
