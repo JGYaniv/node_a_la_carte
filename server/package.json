@@ -6,8 +6,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pg": "^8.3.2"
+    "node-minify": "^3.6.0",
+    "pg": "^8.3.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }

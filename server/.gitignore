@@ -1,2 +1,4 @@
 node_modules
 .env
+temp/node_modules
+temp/.git
