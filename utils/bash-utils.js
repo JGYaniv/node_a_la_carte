@@ -1,7 +1,6 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const compressor = require('node-minify');
-const fsp = fs.promisify
+const fs = require('fs')
 
 const newPackageJson = `
 {
@@ -22,10 +21,11 @@ async function minifyModule(name) {
         mkdir -p store;
         cd store;
         mkdir -p src;
-        printf '${newPackageJson}' > src/package.json;
+        printf '${newPackageJson}' > package.json;
         npm install ${name};
-        printf "const ${name} = require('${name}');" > index.js
+        printf "const Test = require('${name}');" > src/index.js
         webpack
+        gzip -c dist/main.js > dist/main.js.gz
     `);
 
     console.log('stdout:', stdout);
@@ -34,19 +34,13 @@ async function minifyModule(name) {
 
 async function getSizes(moduleName){
     await minifyModule(moduleName)
+    const miniStats = fs.statSync('../temp/store/dist/main.js')
+    const gzipStats = fs.statSync('../temp/store/dist/main.js.gz')
+    console.log(miniStats.size, gzipStats.size)
+    return {
+        mini: miniStats.size,
+        gzip: gzipStats.size
+    }
 }
 
-getSizes('react')
-
-// async function cd(arg){
-//     let { stdout, stderr } = await exec(`cd ${arg}`);
-
-//     console.log('stdout:', stdout);
-//     console.error('stderr:', stderr);
-// }
-
-// Promise.all([
-//     ls(),
-//     cd(".."),
-//     ls()
-// ])
+module.export = getSizes
