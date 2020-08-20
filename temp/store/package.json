@@ -6,6 +6,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "redux-forms": "^0.10.1"
+        "redux-forms": "^0.11.1"
     }
 }

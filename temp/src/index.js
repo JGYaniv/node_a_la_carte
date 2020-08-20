@@ -1,1 +1,1 @@
-const Test = require('redux');
+const Test = require('react');
