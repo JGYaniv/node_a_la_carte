@@ -1,10 +1,8 @@
-require('dotenv').config()
-
 const path = require('path')
 const express = require('express')
 
-const port = process.env.PORT || 3000
-const host = process.env.HOST || 'localhost';
+const port = (process.env && process.env.PORT) || 3000
+const host = (process.env && process.env.HOST) || 'localhost';
 
 const app = express()
 
