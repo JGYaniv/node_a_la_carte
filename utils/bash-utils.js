@@ -1,6 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const compressor = require('node-minify');
+const fsp = fs.promisify
 
 const newPackageJson = `
 {
@@ -13,7 +14,7 @@ const newPackageJson = `
     "dependencies": {}
 }`
 
-async function installModule(name) {
+async function minifyModule(name) {
     let { stdout, stderr } = await exec(`
         rm -rf ../temp/store;
         cd ..; 
@@ -31,17 +32,8 @@ async function installModule(name) {
     console.error('stderr:', stderr);
 }
 
-// function minifyModules(path) {
-//     return compressor.minify({
-//         compressor: 'babel-minify',
-//         input: `${path}/index.js`,
-//         output: `${path}/mini.js`
-//     });
-// }
-
 async function getSizes(moduleName){
-    await installModule(moduleName)
-    await minifyModules('../temp/store')
+    await minifyModule(moduleName)
 }
 
 getSizes('react')
