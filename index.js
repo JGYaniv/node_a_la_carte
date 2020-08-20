@@ -6,7 +6,9 @@ const host = (process.env && process.env.HOST) || 'localhost';
 
 const app = express()
 
-app.use('/modules', require('./routes/modules'))
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+app.use('/api', require('./routes/modules'))
 
 app.listen(port, ()=> {
   console.log(`Listenting to http://${host}:${port}/`)
