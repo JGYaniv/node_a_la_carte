@@ -17,7 +17,8 @@
         "webpack-cli": "^3.3.12"
     },
     "scripts": {
-        "dev": "webpack --watch --mode=development"
+        "dev": "webpack --watch --mode=development",
+        "start": "node server/index.js"
     },
     "author": "",
     "license": "ISC"
