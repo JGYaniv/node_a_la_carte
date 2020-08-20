@@ -9,7 +9,7 @@ serving node module details à la carte
 *Backend:*
 * Express
 * Axios
-* PostGres
+* Postgres
 
 The project is live on Heroku: (https://node-a-la-carte.herokuapp.com)
 The private github repo link: (https://github.com/jgyaniv/node_a_la_carte)

@@ -16,7 +16,7 @@ const newPackageJson = `
 
 async function minifyModule(name, version) {
     let { stdout, stderr } = await exec(`
-        ${process.env && (process.env.NODE_MODE === "production") ? 'cd' : 'cd .'}
+        ${process.env && (process.env.NODE_ENV === "production") ? 'cd' : 'cd .'}
         rm -rf temp/store;
         mkdir -p temp;
         cd temp;
