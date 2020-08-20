@@ -1,6 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const fs = require('fs')
+const path = require('path')
 
 const newPackageJson = `
 {
@@ -13,34 +14,32 @@ const newPackageJson = `
     "dependencies": {}
 }`
 
-async function minifyModule(name) {
+async function minifyModule(name, version) {
     let { stdout, stderr } = await exec(`
-        rm -rf ../temp/store;
-        cd ..; 
+        rm -rf temp/store;
+        mkdir -p temp;
         cd temp;
         mkdir -p store;
         cd store;
-        mkdir -p src;
         printf '${newPackageJson}' > package.json;
-        npm install ${name};
+        npm install ${name}@${version};
+        mkdir -p src;
         printf "const Test = require('${name}');" > src/index.js
-        webpack
+        webpack src/index.js -o dist/main.js
         gzip -c dist/main.js > dist/main.js.gz
     `);
-
-    console.log('stdout:', stdout);
-    console.error('stderr:', stderr);
 }
 
-async function getSizes(moduleName){
-    await minifyModule(moduleName)
-    const miniStats = fs.statSync('../temp/store/dist/main.js')
-    const gzipStats = fs.statSync('../temp/store/dist/main.js.gz')
-    console.log(miniStats.size, gzipStats.size)
+async function getSizes(moduleName, version){
+    await minifyModule(moduleName, version).catch(e=>console.log(e))
+    const miniStats = fs.statSync('./temp/store/dist/main.js')
+    const gzipStats = fs.statSync('./temp/store/dist/main.js.gz')
+
     return {
+        version,
         mini: miniStats.size,
         gzip: gzipStats.size
     }
 }
 
-module.export = getSizes
+module.exports = { getSizes }

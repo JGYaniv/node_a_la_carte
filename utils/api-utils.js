@@ -29,7 +29,7 @@ const npmRegSearch = name => {
 const latestVersions = times => {
     let versions = Object.keys(times)
     let validVersions = versions.filter(version => version.match(/^\d{1,3}.\d{1,3}.\d{1,3}$/)).reverse()
-    let recentBuilds = validVersions.slice(0, 3)
+    let recentBuilds = validVersions.slice(0, 4)
     let oldestSelected = recentBuilds.find(build => build.match(/^\d{1,3}/))
     let previousBuildNum = parseInt(oldestSelected) - 1
     let previousBuild = validVersions.find(version => version.split(".")[0] === `${previousBuildNum}`)

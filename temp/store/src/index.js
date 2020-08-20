@@ -1,0 +1,1 @@
+const Test = require('redux-forms');
