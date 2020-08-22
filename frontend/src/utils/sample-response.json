@@ -12,7 +12,7 @@
     ],
     "module": {
         "title": "redux",
-        "latest_version": "4.0.5",
+        "latestVersion": "4.0.5",
         "versions": [
             {
                 "num": "4.0.5",
