@@ -8,7 +8,7 @@ const app = express()
 
 app.use(express.static(path.join(__dirname, 'frontend')));
 
-app.use('/api', require('./routes/modules'))
+app.use('/api', require('./routes/api'))
 
 app.listen(port, ()=> {
   console.log(`Listenting to http://${host}:${port}/`)

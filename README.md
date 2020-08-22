@@ -2,13 +2,10 @@
 serving node module details à la carte
 
 ## tech stack
-*Frontend:*
 * React
 * Webpack
-
-*Backend:*
-* Express
 * Axios
+* Express
 * Postgres
 
 The project is live on Heroku: (https://node-a-la-carte.herokuapp.com)

@@ -1,13 +1,19 @@
-import sampleResponse from './sample-response.json'
+import axios from 'axios' 
 
-export const queryModules = query => (
-    fetch(`https://node-a-la-carte.herokuapp.com/api/find?q=${query.split(" ").join("+")}`)
-        .then(res => res)
-        .catch(e => console.log(e))
+const urlHelper = () => (
+    process.env && (process.env.NODE_ENV === 'production') ? 
+        "https://node-a-la-carte.herokuapp.com/api" :
+        "http://localhost:3000/api"
 )
 
-export const queryModuleDetails = moduleName => (
-    fetch(`https://node-a-la-carte.herokuapp.com/api/request?q=${moduleName}`)
-        .then(res => res)
+export const queryModules = query => {
+    const url = `${urlHelper()}/find?q=${query.split(" ").join("+")}`;
+    return axios.get(url)
         .catch(e => console.log(e))
-)
+}
+
+export const queryModuleDetails = moduleName => {
+    const url = `${urlHelper()}/details?q=${moduleName}`
+    return axios.get(url)
+        .catch(e => console.log(e))
+}

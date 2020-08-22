@@ -11,18 +11,19 @@ const App = () => {
     const [details, setDetails] = useState({})
     
     const updateResults = () => {
-        const newResults = queryModules(query)
-        setResults(newResults)
+        if (!query) return
+        queryModules(query)
+            .then(res => setResults(res.data))
     }
 
     const getDetails = () => {
-        const newDetails = queryModuleDetails(query)
-        setDetails(newDetails)
+        queryModuleDetails(query)
+            .then(res => setDetails(res.data))
     }
     
     useEffect(updateResults, [query])
 
-    const searchProps = { results, query, setQuery, getDetails}
+    const searchProps = { results, query, setQuery, getDetails }
 
     return(
         <div>

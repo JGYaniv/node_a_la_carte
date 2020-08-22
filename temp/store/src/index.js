@@ -1,1 +1,1 @@
-const Test = require('redux-forms');
+const Test = require('rea');
