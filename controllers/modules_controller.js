@@ -1,31 +1,35 @@
-const { npmsSearch, npmRegSearch } = require('../utils/api-utils')
+const { npmsSearch, npmRegSearch, takeFive } = require('../utils/api-utils')
 const { getSizes } = require('../utils/bash-utils')
-const { Module } = require('../models/modules')
 const { Version } = require('../models/versions')
-const versions = require('../models/versions')
  
 const show = async (req, res) => {
     // show module details and associated version details
     const result = await npmRegSearch(req.params.name)
-    // check to see if the latest version is in the db
+
+    // figure out which versions we want (four most recent then last version from previous build)
+    const fiveVersions = takeFive(result.versions)
+
+    // compare versions in db to latest versions in npm registry
+    const versions = await Version.get(req.params.name)
+    const versionNums = versions.map(version => version.num)
+    const versionsNotIncluded = fiveVersions.filter(version => !versionNums.includes(version))
 
     // if latest version is NOT in the db, then find which versions are missing and size em up
+    newVersions = await Promise.all(versionsNotIncluded.map(
+            async versionNum => {
+                const sizes = await getSizes(result.name, versionNum)
+                return { num: versionNum, ...sizes }
+            }
+        ))
+    
+    const allVersions = [...newVersions, ...versions]
+    const selectedVersions = fiveVersions.map( version => allVersions.find(versionObj => versionObj.num === version  ))
 
-    // maybe we should move this logic to the versions controller and only return a list of version nums or ids???
-    // const versions = await Promise.all(result.versions.map(
-    //     async version => {
-    //         // ONLY GET SIZES if we don't already have the sizes for this version
-    //         const sizes = await getSizes(result.name, version)
-    //         return { version: version, ...sizes }
-    //     }
-    // ))
-
-    let versions = await Version.get(req.params.name)
     res.json({
         name: result.name,
         description: result.description,
         lastUpdated: result.lastUpdated,
-        versions
+        versions: selectedVersions
     })
 }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import Bar from './bar'
 
 const Versions = ({versions, scale}) => {
-    const toKb = bits => `${Math.round((bits / 1000).toFixed(2) * 100) / 100}kb`
+    const toKb = bits => `${Math.round((bits / 1000).toFixed(1) * 10) / 10}kb`
 
     return(
         <ul>
