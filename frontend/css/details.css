@@ -45,6 +45,9 @@ svg .mini {
   text-align: left;
   font-weight: 100;
   color: silver;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #details span {
