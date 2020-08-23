@@ -18,7 +18,7 @@ const App = () => {
 
     const getDetails = name => {
         getModule(name)
-            .then(res => {console.log(res.data);setDetails(res.data)})
+            .then(res => setDetails(res.data))
     }
     
     useEffect(updateResults, [query])

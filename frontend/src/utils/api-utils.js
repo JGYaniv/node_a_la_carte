@@ -1,8 +1,9 @@
 import axios from 'axios' 
 
 const urlHelper = () => (
+    window.location.includes("localhost") ? 
+        "http://localhost:3000/api" :
         "https://node-a-la-carte.herokuapp.com/api"
-        // "http://localhost:3000/api"
 )
 
 export const searchModules = query => {
