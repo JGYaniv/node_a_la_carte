@@ -6,7 +6,7 @@
     "author": "",
     "license": "ISC",
     "scripts":{
-        "start": "node index.js"
+        "start": "node server.js"
     },
     "dependencies": {
         "@babel/core": "^7.11.4",
