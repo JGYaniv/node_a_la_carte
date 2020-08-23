@@ -71,13 +71,13 @@ class Module {
             })
     }
     
-    async update(moduleDetails){
-        //updates the records for an existing module
-    }
+    // async update(moduleDetails){
+    //     //updates the records for an existing module
+    // }
 
-    async versions() {
-        // returns associated versions
-    }
+    // async versions() {
+    //     // returns associated versions
+    // }
 }
 
 module.exports = { Module }
