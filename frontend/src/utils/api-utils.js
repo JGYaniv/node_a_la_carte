@@ -1,7 +1,7 @@
 import axios from 'axios' 
 
 const urlHelper = () => (
-    window.location.includes("localhost") ? 
+    window.location.href.includes("localhost") ? 
         "http://localhost:3000/api" :
         "https://node-a-la-carte.herokuapp.com/api"
 )
