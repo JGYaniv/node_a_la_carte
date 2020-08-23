@@ -6,6 +6,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "rea": "0.0.1"
+        "react": "^15.6.2"
     }
 }

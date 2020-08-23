@@ -1,1 +1,1 @@
-const Test = require('rea');
+const Test = require('react')

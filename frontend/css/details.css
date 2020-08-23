@@ -1,3 +1,72 @@
+#details {
+  max-width: 50rem;
+  min-width: 40rem;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: unset;
+}
+
 #details ul {
   display: flex;
+  height: 100%;
+  box-sizing: border-box;
+  margin-top: 1rem;
 }
+
+#details li {
+  width: 100%;
+  margin-right: 3rem;
+}
+
+.bar {
+  height: 85%;
+  width: 5rem;
+  margin-top: .5rem;
+}
+
+svg .gzip {
+  fill: var(--body-pink);
+}
+
+svg .mini {
+  fill: silver;
+}
+
+#details h1 {
+  text-align: left;
+  color: --body-pink;
+  font-weight: 100;
+}
+
+#details h3 {
+  text-align: left;
+  font-weight: 100;
+  color: silver;
+}
+
+#details span {
+  font-family: sans-serif;
+}
+
+.version p {
+  font-size: .7rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.mini span:first-child{
+  color: var(--body-pink);
+}
+
+.gzip span:first-child{
+  color: silver;
+}
+
+.mini span, .gzip span {
+  font-weight: 100;
+}
+
+

@@ -1,6 +1,50 @@
 @import "search.css";
 @import "details.css";
 
+:root {
+    --body-pink: #fba0b1;
+}
+
 ul {
+    padding: 0;
     list-style: none;
+    overflow: overlay;
+}
+
+body, html, #root{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+}
+
+p, h1, h2, h3, ul, li {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+input:focus {
+    border: 1px solid gray;
+}
+
+.header {
+  min-height: 10rem;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  justify-content: flex-end;
+}
+
+.header h1 {
+  color: #fd889d;
+  font-size: 2em;
+}
+
+.header h3 {
+  font-family: cursive;
+  font-size: 1.5em;
 }

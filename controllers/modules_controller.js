@@ -21,10 +21,9 @@ const show = async (req, res) => {
     // ))
 
     let versions = await Version.get(req.params.name)
-    console.log(req.params.name)
-    console.log(versions)
     res.json({
         name: result.name,
+        description: result.description,
         lastUpdated: result.lastUpdated,
         versions
     })

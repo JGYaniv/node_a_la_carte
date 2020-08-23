@@ -6,14 +6,14 @@ const urlHelper = () => (
         "http://localhost:3000/api"
 )
 
-export const queryModules = query => {
-    const url = `${urlHelper()}/find?q=${query.split(" ").join("+")}`;
+export const searchModules = query => {
+    const url = `${urlHelper()}/modules?q=${query.split(" ").join("+")}`;
     return axios.get(url)
         .catch(e => console.log(e))
 }
 
-export const queryModuleDetails = moduleName => {
-    const url = `${urlHelper()}/details?q=${moduleName}`
+export const getModule = name => {
+    const url = `${urlHelper()}/modules/${name}`
     return axios.get(url)
         .catch(e => console.log(e))
 }

@@ -1,14 +1,22 @@
 import React from 'react'
 
 import Versions from './versions'
-import BarChart from './bar-chart'
 
-const Details = ({details}) => (
-    <section id="details">
-        <h1>{details.title}</h1>
-        <Versions versions={details.versions}></Versions>
-        <BarChart versions={details.versions}></BarChart>
-    </section>
-)
+const Details = ({details}) => {
+    const scale = details.versions.reduce( (max, version) => {
+        return max > version.mini ? max : version.mini
+    }, 0)
+
+    return (
+        <div id="details">
+            <div className="header">
+                <h1>{details.name}</h1>
+                <h3>{details.description}</h3>
+            </div>
+            <Versions versions={details.versions} scale={scale}></Versions>
+            
+        </div>
+    )
+}
 
 export default Details

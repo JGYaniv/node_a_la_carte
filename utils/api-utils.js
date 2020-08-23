@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const npmsUrl = query => `https://api.npms.io/v2/search?q=${query.split(" ").join("+")}`
+const npmsUrl = query => `https://api.npms.io/v2/search?q=${query.split(" ").join("+")}+boost-exact:false`
 const npmRegUrl = name => `https://registry.npmjs.org/${name}`
 
 // returns list of node modules based on keywords & sorted by popularity

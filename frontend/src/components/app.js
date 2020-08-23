@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Search from './search/search'
 import Details from './details/details'
 
-import { queryModules, queryModuleDetails } from '../utils/api-utils'
+import { searchModules, getModule } from '../utils/api-utils'
 
 const App = () => {
     const [query, setQuery] = useState("")
@@ -12,13 +12,13 @@ const App = () => {
     
     const updateResults = () => {
         if (!query) return
-        queryModules(query)
+        searchModules(query)
             .then(res => setResults(res.data))
     }
 
-    const getDetails = () => {
-        queryModuleDetails(query)
-            .then(res => setDetails(res.data))
+    const getDetails = name => {
+        getModule(name)
+            .then(res => {console.log(res.data);setDetails(res.data)})
     }
     
     useEffect(updateResults, [query])
@@ -26,11 +26,11 @@ const App = () => {
     const searchProps = { results, query, setQuery, getDetails }
 
     return(
-        <div>
+        <>
             {/* <Header/> */}
             <Search {...searchProps}/>
             { details["versions"] && <Details details={details}/>} 
-        </div>
+        </>
     )
 }
 

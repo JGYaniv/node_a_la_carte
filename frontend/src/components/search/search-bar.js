@@ -3,10 +3,13 @@ import React from 'react'
 const SearchBar = ({ query, setQuery, getDetails }) => {
 
     return (
-        <form onSubmit={e => {e.preventDefault();getDetails()}}>
-            <h1>Searchme</h1>
-            <input type="text" onChange={e => setQuery(e.target.value)}></input>
-            <input type="submit" value="SEARCH"></input>
+        <form onSubmit={e => {e.preventDefault();getDetails(query)}}>
+            <input 
+                type="text" 
+                onChange={e => setQuery(e.target.value)}
+                placeholder="Search for a node module..."
+                className="searchBar"
+            ></input>
         </form>
     )
 

@@ -5,8 +5,7 @@ const SearchResults = ({ results, getDetails }) => {
     if (!results) return <ul></ul>
 
     const clickHandler = e => {
-        console.log(e.target.innerText)
-        getDetails(e.target.innerText)
+        getDetails(e.currentTarget.innerText)
     }
 
     const resultList = results.map(
@@ -14,7 +13,7 @@ const SearchResults = ({ results, getDetails }) => {
     )
 
     return (
-        <ul>
+        <ul className="searchResults">
             {resultList}
         </ul>
     )
