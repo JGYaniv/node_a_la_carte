@@ -50,7 +50,6 @@ class Module {
     
     static create({name, description, sourceUpdated}){
         //posts a new module to the database
-        //gets the module details from directory
         const db = client()
         db.connect()
         return client.query({

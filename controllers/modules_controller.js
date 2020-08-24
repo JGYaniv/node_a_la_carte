@@ -1,5 +1,5 @@
 const { npmsSearch, npmRegSearch, takeFive } = require('../utils/api-utils')
-const { getSizes } = require('../utils/bash-utils')
+const { getSizes } = require('../utils/module-utils')
 const { Version } = require('../models/versions')
  
 const show = async (req, res) => {
