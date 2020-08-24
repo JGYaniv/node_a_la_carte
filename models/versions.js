@@ -9,7 +9,7 @@ class Version {
     }
 
     static get(moduleName) {
-        //gets the module details from directory
+        //gets the version details from directory
         const db = client()
         db.connect()
         return db.query({
@@ -33,36 +33,27 @@ class Version {
             })
     }
 
-    // static create({ name, description, sourceUpdated }) {
-    //     //posts a new module to the database
-    //     //gets the module details from directory
-    //     const db = client()
-    //     db.connect()
-    //     return client.query({
-    //         text: `
-    //             INSERT INTO modules (name, description, sourceUpdated) 
-    //             VALUES ($1::text, $2::text, $3::date)
-    //         `,
-    //         values: [name, description, sourceUpdated]
-    //     })
-    //         .catch(e => {
-    //             console.log(e)
-    //             db.end()
-    //             return
-    //         })
-    //         .then(res => {
-    //             db.end()
-    //             return res.rows
-    //         })
-    // }
-
-    // async update(moduleDetails) {
-    //     //updates the records for an existing module
-    // }
-
-    // async versions() {
-    //     // returns associated versions
-    // }
+    static create({ num, mini, gzip, moduleId }) {
+        //posts a new verion to the database
+        const db = client()
+        db.connect()
+        return db.query({
+            text: `
+                INSERT INTO versions (num, mini, gzip, moduleId) 
+                VALUES ($1::text, $2::int, $3::int, $4::int)
+            `,
+            values: [num, mini, gzip, moduleId]
+        })
+            .catch(e => {
+                console.log(e)
+                db.end()
+                return
+            })
+            .then(res => {
+                db.end()
+                return {message: 'success!'}
+            })
+    }
 }
 
 module.exports = { Version }

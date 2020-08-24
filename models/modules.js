@@ -26,12 +26,12 @@ class Module {
     }
     
     static get(name) {
-        //gets the module details from directory
+        //gets the module details from the db
         const db = client()
         db.connect()
         return db.query({
             text: `
-                SELECT name, description
+                SELECT id, name, description
                 FROM modules 
                 WHERE name = $1::text
             `,
@@ -44,15 +44,16 @@ class Module {
             })
             .then(res => {
                 db.end()
-                return res.rows[0]
+                return res.rows ? res.rows[0] : {error: "module not in database"}
             })
     }
     
     static create({name, description, sourceUpdated}){
         //posts a new module to the database
         const db = client()
+
         db.connect()
-        return client.query({
+        return db.query({
             text: `
                 INSERT INTO modules (name, description, sourceUpdated) 
                 VALUES ($1::text, $2::text, $3::date)
@@ -66,17 +67,10 @@ class Module {
             })
             .then(res => {
                 db.end()
-                return res.rows
+                return res.rows[0]
             })
     }
     
-    // async update(moduleDetails){
-    //     //updates the records for an existing module
-    // }
-
-    // async versions() {
-    //     // returns associated versions
-    // }
 }
 
 module.exports = { Module }

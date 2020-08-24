@@ -35,6 +35,14 @@ svg .mini {
   fill: silver;
 }
 
+svg:hover {
+  stroke: #ffeeb64d;
+  stroke-width: 3;
+  stroke-linecap: butt;
+  stroke-dasharray: 0;
+  cursor: pointer;
+}
+
 #details h1 {
   text-align: left;
   color: --body-pink;
@@ -55,10 +63,22 @@ svg .mini {
 }
 
 .version p {
-  font-size: .7rem;
+  font-size: .8rem;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   margin-right: 3rem;
+  font-style: italic;
+}
+
+.version {
+  position: absolute;
+  bottom: -1.7rem;
+  width: 100%;
+  color: white;
+}
+
+.versionText {
+  position: relative;
 }
 
 .mini span:first-child{
@@ -72,5 +92,6 @@ svg .mini {
 .mini span, .gzip span {
   font-weight: 100;
 }
+
 
 

@@ -10,9 +10,9 @@ const Versions = ({versions, scale}) => {
             {versions.map(
                 (version, idx) => <li key={idx * 10000}>
                     <div className="versionText">
-                        <div className="version"><p>{`v${version.num}`}</p></div>
                         <div className="mini"><span>mini: </span><span>{toKb(version.mini)}</span></div>
                         <div className="gzip"><span>gzip: </span><span>{toKb(version.gzip)}</span></div>
+                        <div className="version"><p>{`v${version.num}`}</p></div>
                     </div>
 
                     <Bar className="versionBar" version={version} scale={scale}></Bar>

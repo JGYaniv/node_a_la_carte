@@ -1,6 +1,5 @@
 const { Router } = require('express')
 const modules = require('../controllers/modules_controller')
-const versions = require('../controllers/versions_controller')
 
 const router = new Router()
 

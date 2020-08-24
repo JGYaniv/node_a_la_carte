@@ -42,7 +42,7 @@ async function gzipTar(input, output) {
 
 async function webpack(entry, output){
     let { stdout, stderr } = await exec(`
-        webpack ${entry} -o ${output}
+        webpack --mode="production"
     `)
 
     console.log(stdout)

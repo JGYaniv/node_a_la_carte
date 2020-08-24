@@ -1,16 +1,23 @@
 const { npmsSearch, npmRegSearch, takeFive } = require('../utils/api-utils')
 const { getSizes } = require('../utils/module-utils')
 const { Version } = require('../models/versions')
+const { Module } = require('../models/modules')
  
 const show = async (req, res) => {
-    // show module details and associated version details
+    // get module details and associated version details
     const result = await npmRegSearch(req.params.name)
+    let moduleRecord = await Module.get(req.params.name)
+    const versions = await Version.get(req.params.name)
+
+    if (!moduleRecord) {
+        await create({name: req.params.name})
+        moduleRecord = await Module.get(req.params.name)
+    }
 
     // figure out which versions we want (four most recent then last version from previous build)
     const fiveVersions = takeFive(result.versions)
 
     // compare versions in db to latest versions in npm registry
-    const versions = await Version.get(req.params.name)
     const versionNums = versions.map(version => version.num)
     const versionsNotIncluded = fiveVersions.filter(version => !versionNums.includes(version))
 
@@ -18,7 +25,9 @@ const show = async (req, res) => {
     newVersions = await Promise.all(versionsNotIncluded.map(
             async versionNum => {
                 const sizes = await getSizes(result.name, versionNum)
-                return { num: versionNum, ...sizes }
+                const newVersion = { num: versionNum, ...sizes, moduleId: moduleRecord.id }
+                Version.create(newVersion)
+                return newVersion
             }
         ))
     
@@ -39,12 +48,19 @@ const index = async (req, res) => {
     res.json(result)
 }
 
-// const create = ({ name, details, sourceUpdated }) => {
+const create = async ({name}) => {
+    const validModule = await npmRegSearch(name)
 
-// }
+    if (!validModule.error) {
+        Module.create({ 
+            name, 
+            description: validModule.description, 
+            sourceUpdated: new Date()
+        })
+    }
+
+    return validModule
+}
 
 
-// const modulesDb = require('../db/modules')
-
-
-module.exports = {show, index }
+module.exports = {show, index, create }

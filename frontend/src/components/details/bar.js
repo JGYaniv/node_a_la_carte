@@ -2,6 +2,7 @@ import React from 'react'
 
 const Bar = ({version, scale}) => {
     const {mini, gzip} = version;
+    
     return (
         <svg className="bar">
             <g>

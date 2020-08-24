@@ -1,1 +1,1 @@
-const Test = require('react-router'); Object.entries(Test);
+const Test = require('nodemon'); Object.entries(Test);

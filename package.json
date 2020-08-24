@@ -1,26 +1,38 @@
 {
-    "name": "temp",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "author": "",
-    "license": "ISC",
-    "scripts": {
-        "start": "node server.js"
-    },
-    "dependencies": {
-        "@babel/core": "^7.11.4",
-        "@babel/preset-env": "^7.11.0",
-        "@babel/preset-react": "^7.10.4",
-        "axios": "^0.20.0",
-        "babel-loader": "^8.1.0",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "pg": "^8.3.2",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "uglify-js": "^3.10.1",
-        "webpack": "^4.44.1",
-        "webpack-cli": "^3.3.12"
-    }
+  "name": "node_a_la_carte",
+  "version": "1.0.0",
+  "description": "serving node module specs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "axios": "^0.20.0",
+    "babel-loader": "^8.1.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.3.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.3",
+    "uglify-js": "^3.10.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JGYaniv/node_a_la_carte.git"
+  },
+  "author": "Jonathan Gil Yaniv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JGYaniv/node_a_la_carte/issues"
+  },
+  "homepage": "https://github.com/JGYaniv/node_a_la_carte#readme",
+  "devDependencies": {},
+  "keywords": []
 }

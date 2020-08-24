@@ -5,11 +5,11 @@ const fs = require('fs')
 async function getSizes(moduleName, version) {
     await install(moduleName, version).catch(e => console.log(e))
 
-    let minPath = 'temp/store/src/index.min.js'
-    let gzipPath = minPath + '.gz'
+    let miniPath = 'temp/store/src/index.min.js'
+    let gzipPath = miniPath + '.gz'
 
-    await webpack('temp/store/src/index.js', minPath).catch(e => console.log)
-    await gzip(minPath, gzipPath).catch(e => console.log(e))
+    await webpack('temp/store/src/index.js', miniPath).catch(e => console.log)
+    await gzip(miniPath, gzipPath).catch(e => console.log(e))
 
     // if (!exitCode) {
 
@@ -17,7 +17,7 @@ async function getSizes(moduleName, version) {
 
     let miniStats, gzipStats
 
-    try { miniStats = fs.statSync(minPath) } 
+    try { miniStats = fs.statSync(miniPath) } 
     catch { miniStats = { size: 0 } }  
     // some modules are not webpacking correctly, setting to 0 as a fallback
 
