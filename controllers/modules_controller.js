@@ -5,21 +5,20 @@ const { Module } = require('../models/modules')
  
 const show = async (req, res) => {
     // get module details and associated version details
+    // TODO: remove awaits and run API calls asynchronously
     const result = await npmRegSearch(req.params.name)
-    let moduleRecord = await Module.get(req.params.name)
     const versions = await Version.get(req.params.name)
+    let moduleRecord = await Module.get(req.params.name)
 
+    // if module is not yet in db, then create
     if (!moduleRecord) {
         await create({name: req.params.name})
         moduleRecord = await Module.get(req.params.name)
     }
 
-    // figure out which versions we want (four most recent then last version from previous build)
-    const fiveVersions = takeFive(result.versions)
-
     // compare versions in db to latest versions in npm registry
     const versionNums = versions.map(version => version.num)
-    const versionsNotIncluded = fiveVersions.filter(version => !versionNums.includes(version))
+    const versionsNotIncluded = result.versions.filter(version => !versionNums.includes(version))
 
     // if latest version is NOT in the db, then find which versions are missing and size em up
     newVersions = await Promise.all(versionsNotIncluded.map(
@@ -32,7 +31,7 @@ const show = async (req, res) => {
         ))
     
     const allVersions = [...newVersions, ...versions]
-    const selectedVersions = fiveVersions.map( version => allVersions.find(versionObj => versionObj.num === version  ))
+    const selectedVersions = result.versions.map( version => allVersions.find(versionObj => versionObj.num === version  ))
 
     res.json({
         name: result.name,

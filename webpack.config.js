@@ -7,6 +7,11 @@ module.exports = {
         path: path.resolve(__dirname, "temp/store/src"),
         filename: "index.min.js",
     },
+    target: 'node',
+    node: {
+        __dirname: false,
+        __filename: false,
+    },
     module: {
         rules: [
             {
@@ -15,7 +20,7 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
-            }
+            },
         ]
     }
 };

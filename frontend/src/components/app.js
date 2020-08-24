@@ -36,7 +36,7 @@ const App = () => {
         startLoad()
         getModule(name)
             .then(res => {
-                if (!res) setDetails(res.data)
+                if (!!res) setDetails(res.data)
                 endLoad()
             })
     }
