@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import Search from './search/search'
 import Details from './details/details'
-import Loader from './ui/loader'
+import Modal from './ui/modal'
 import { searchModules, getModule } from '../utils/api-utils'
 
 const App = () => {
@@ -47,7 +47,7 @@ const App = () => {
 
     return(
         <>
-            <Loader loading={loading} errors={errors}/>
+            <Modal loading={loading} errors={errors}/>
             <Search {...searchProps}/>
             {details["versions"] && <Details details={details} loading={loading}/>} 
         </>
