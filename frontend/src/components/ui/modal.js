@@ -1,10 +1,13 @@
 import React from 'react'
+import Suggest from './suggest'
 
-const Modal = ({loading, errors}) => (
-    <div id="loadModal" className={loading ? "" : "hidden"}>
-        <h2 className={errors.length ? "errors" : "hidden"}>{errors.join(" ")}</h2>
-        <div></div>
-    </div>
+const Modal = ({modal, errors, getDetails}) => (
+    <>
+        { errors.timeout && <Suggest getDetails={getDetails}/> }
+        { modal === "loading" && <div className="loadingMan"></div> }
+        
+        <div className={modal ? "modal" : "hidden"}></div>
+    </>
 )
 
 export default Modal

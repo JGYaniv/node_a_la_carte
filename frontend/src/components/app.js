@@ -9,21 +9,23 @@ const App = () => {
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
     const [details, setDetails] = useState({})
-    const [loading, setLoading] = useState(false)
-    const [errors, setErrors] = useState([])
-    const [stallTimer, setStallTimer] = useState(null)
-    
+    const [errors, setErrors] = useState({})
+    const [timer, setTimer] = useState(null)
+
+    const [modal, setModal] = useState("")
+    const loading = modal === "loading"
+
     const startLoad = () => {
-        setLoading(true)
-        setStallTimer(setTimeout(() => {
-            setErrors(["Looks like we're stuck... why don't you reload and check out another module?"])
+        setModal("loading")
+        setTimer(setTimeout(() => {
+            setErrors({timeout: true})
         }, 15000))
     }
 
     const endLoad = () => {
-        setLoading(false)
-        clearTimeout(stallTimer)
-        setErrors([])
+        setModal("")
+        clearTimeout(timer)
+        setErrors({})
     }
 
     const updateResults = () => {
@@ -42,14 +44,17 @@ const App = () => {
     }
     
     useEffect(updateResults, [query])
+    useEffect(endLoad, [details])
 
     const searchProps = { results, query, setQuery, getDetails, loading }
+    const modalProps = { modal, errors, getDetails }
+    const detailProps = { details, loading }
 
     return(
         <>
-            <Modal loading={loading} errors={errors}/>
+            <Modal {...modalProps}/>
             <Search {...searchProps}/>
-            {details["versions"] && <Details details={details} loading={loading}/>} 
+            {details["versions"] && <Details {...detailProps} />} 
         </>
     )
 }

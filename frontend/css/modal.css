@@ -1,0 +1,68 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  z-index: 10;
+}
+
+.loadingMan {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-position: bottom;
+  width: 50%;
+  background-image: url(https://media0.giphy.com/media/l3nWhI38IWDofyDrW/giphy.gif?cid=ecf05e4705rr24kjk3h54uor09sie9yr0p0yy5t16iu6j40b&rid=giphy.gif);
+}
+
+.errors {
+    color: var(--body-pink);
+    width: 30rem;
+    padding: 1rem;
+}
+
+.greatSuggestion {
+    z-index: 20;
+    position: fixed;
+    padding: 1rem;
+    top: 30%;
+    left: 15%;
+    background: white;
+    border: lightgray 1px solid;
+    border-radius: 15px;
+}
+
+.greatSuggestion p {
+    margin-bottom: 1rem;
+    width: 30rem;
+    font-weight: 100;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.buttonGrid {
+    display: flex;
+    width: 32rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.buttonGrid button {
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    width: 10rem;
+    margin: 1rem 2rem;
+    border: gray;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.buttonGrid button:hover { 
+    background-color: darkgray;
+    color: silver;
+}

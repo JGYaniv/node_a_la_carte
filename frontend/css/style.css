@@ -1,5 +1,6 @@
 @import "search.css";
 @import "details.css";
+@import "modal.css";
 
 :root {
     --body-pink: #fba0b1;
@@ -49,34 +50,7 @@ input:focus {
   font-size: 1.5em;
 }
 
-#loadModal {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,255,255,0.5);
-  position: fixed;
-  z-index: 10;
-}
-
-#loadModal div {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 11;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-position: bottom;
-  width: 50%;
-  background-image: url(https://media0.giphy.com/media/l3nWhI38IWDofyDrW/giphy.gif?cid=ecf05e4705rr24kjk3h54uor09sie9yr0p0yy5t16iu6j40b&rid=giphy.gif);
-}
 
 .hidden {
   display: none !important;
-}
-
-.errors {
-  position: fixed;
-  margin: 25%;
-  color: var(--body-pink);
-  z-index: 20;
 }
